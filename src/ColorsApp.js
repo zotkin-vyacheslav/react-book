@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import data from './data/data';
 import {v4} from 'uuid';
 import './App.css';
-import AddColorForm from './components/AddColorForm';
-import ColorList from './components/ColorList';
+import AddColorForm from './components/colorform/AddColorForm';
+import ColorList from './components/colorform/ColorList';
 
-class App extends Component {
+class ColorsApp extends Component {
 
     constructor(props) {
         super(props);
@@ -58,4 +58,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default ColorsApp;
