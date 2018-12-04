@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import ColorsApp from './ColorsApp';
 import MembersApp from './MembersApp';
+import HiddenMessages from './components/messages/HiddenMessages';
 import * as serviceWorker from './serviceWorker';
 
 // ReactDOM.render(<ColorsApp />, document.getElementById('root'));
-ReactDOM.render(<MembersApp />, document.getElementById('root'));
+// ReactDOM.render(<MembersApp />, document.getElementById('root'));
+ReactDOM.render(<HiddenMessages />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
