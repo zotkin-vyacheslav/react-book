@@ -1,5 +1,14 @@
 import React, {Component} from 'react';
-import HiddenMessage from './HiddenMessage';
+// import HiddenMessage from './HiddenMessage';
+import Expandable from "../hoc/Expandable";
+
+const ShowHideMessage = ({children, collapsed, expandCollapse}) =>
+    <p onClick={expandCollapse}>
+        {(collapsed) ?
+            children.replace(/[a-zA-Z0-9]/g, "x") :
+            children}
+    </p>;
+const HiddenMessage = Expandable(ShowHideMessage);
 
 class HiddenMessages extends Component {
     constructor(props) {
@@ -32,7 +41,7 @@ class HiddenMessages extends Component {
             <div className='hidden-messages'>
                 {messages.map((message, i) =>
                     <HiddenMessage key={i}
-                                   hide={(i !== showing)}>
+                                   collapsed={(i !== showing)}>
                         {message}
                     </HiddenMessage>
                 )}

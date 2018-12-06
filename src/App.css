@@ -19,6 +19,10 @@
     );
 }
 
+div .color {
+    height: 5px;
+}
+
 .star.selected {
     background-color: red;
 }
