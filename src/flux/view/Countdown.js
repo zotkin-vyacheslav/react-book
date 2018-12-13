@@ -1,7 +1,10 @@
 import React from 'react';
 
 const Countdown = ({count, tick, reset}) => {
+
+    console.log(count);
     if (count) {
+        console.log('setTimeout');
         setTimeout(() => tick(), 1000);
     }
 

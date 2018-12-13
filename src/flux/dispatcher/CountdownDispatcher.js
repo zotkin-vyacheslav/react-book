@@ -1,6 +1,10 @@
-import Dispatcher from 'flux';
+import {Dispatcher} from 'flux';
 
 class CountdownDispatcher extends Dispatcher {
+    constructor(props) {
+        super(props);
+    }
+
     handleAction(action) {
         console.log('dispatching action: ', action);
         this.dispatch({

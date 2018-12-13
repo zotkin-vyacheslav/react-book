@@ -12,6 +12,10 @@ import TimeLine from './components/d3t/TimeLine';
 import historicDatesForSkiing from './data/historicDatesForSkiing';
 import PopUpButton from './components/test/MenuButton';
 import * as serviceWorker from './serviceWorker';
+import CountdownDispatcher from './flux/dispatcher/CountdownDispatcher';
+import countdownActions from './flux/actions/CountdownActions';
+import CountdownStore from './flux/store/CountdownStore';
+import Countdown from './flux/view/Countdown';
 
 const findChild = (children, child) => Children.toArray(children).filter(c => c.type === child)[0];
 
@@ -40,16 +44,28 @@ const ShowHideMessage = ({children, collapsed, expandCollapse}) =>
 const HiddenMessage = Expandable(ShowHideMessage)
 
 const CountryDropdown = DataComponent(CountryNames, "https://restcountries.eu/rest/v1/all");
+
+const appDispatcher = new CountdownDispatcher()
+const actions = countdownActions(appDispatcher)
+const store = new CountdownStore(10, appDispatcher)
+const render = count => ReactDOM.render(
+    <Countdown count={count} {...actions} />,
+    document.getElementById('root')
+);
+store.on("TICK", () => render(store.count))
+store.on("RESET", () => render(store.count))
+render(store.count);
+
 // ReactDOM.render(<ColorsApp />, document.getElementById('root'));
 // ReactDOM.render(<MembersApp />, document.getElementById('root'));
 // ReactDOM.render(<HiddenMessages />, document.getElementById('root'));
 // ReactDOM.render(<TimeLine name="History of Skiing" data={historicDatesForSkiing}/>, document.getElementById('root'));
 // ReactDOM.render(<CountryList />, document.getElementById('root'));
 // ReactDOM.render(<HiddenMessage />, document.getElementById('root'));
-ReactDOM.render(<PopUpButton hidden={true} txt='Toggle popup'>
-    <h1>Hidden content</h1>
-    <p>This content will start off hidden</p>
-</PopUpButton>, document.getElementById('root'));
+// ReactDOM.render(<PopUpButton hidden={true} txt='Toggle popup'>
+//     <h1>Hidden content</h1>
+//     <p>This content will start off hidden</p>
+// </PopUpButton>, document.getElementById('root'));
 // ReactDOM.render(
 //     <Display ifTruthy={age >= 21}>
 //         <WhenTruthy><h1>You can enter</h1></WhenTruthy>

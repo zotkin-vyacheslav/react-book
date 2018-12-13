@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import data from './data/data';
-import {v4} from 'uuid';
+import v4 from 'uuid/v4';
 import './App.css';
 import AddColorForm from './components/colorform/AddColorForm';
 import ColorList from './components/colorform/ColorList';
