@@ -25,3 +25,15 @@ export const addColor = (title, color) =>
         color,
         timestamp: new Date().toString()
     });
+
+export const removeColor = id =>
+    ({
+        type: C.REMOVE_COLOR,
+        id
+    });
+export const rateColor = (id, rating) =>
+    ({
+        type: C.RATE_COLOR,
+        id,
+        rating
+    });
